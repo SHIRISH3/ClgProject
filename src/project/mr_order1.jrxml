@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null"  pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="9daf9dee-a4f3-4e23-8eec-f3d11009f29f">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="mr_invoice" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT
+     mr_list.`No` AS mr_list_No,
+     mr_list.`MR_Name` AS mr_list_MR_Name,
+     mr_list.`Company_Name` AS mr_list_Company_Name,
+     mr_order.`No` AS mr_order_No,
+     mr_order.`id` AS mr_order_id,
+     mr_order.`Medicine_Name` AS mr_order_Medicine_Name,
+     mr_order.`Qty` AS mr_order_Qty
+FROM
+     `mr_list` mr_list inner join `mr_order` mr_order on  mr_list.`No` =  mr_order.`No` where mr_order.`No`= $P{mr_invoice}]]>
+	</queryString>
+	<field name="mr_list_No" class="java.lang.Integer"/>
+	<field name="mr_list_MR_Name" class="java.lang.String"/>
+	<field name="mr_list_Company_Name" class="java.lang.String"/>
+	<field name="mr_order_No" class="java.lang.Integer"/>
+	<field name="mr_order_id" class="java.lang.Integer"/>
+	<field name="mr_order_Medicine_Name" class="java.lang.String"/>
+	<field name="mr_order_Qty" class="java.lang.Integer"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="101" splitType="Stretch">
+			<staticText>
+				<reportElement x="223" y="8" width="100" height="20" uuid="bef05d20-4310-46f2-a0c0-5ccc0c50f89b"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Shree Pharmacy]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="14" y="40" width="30" height="20" uuid="70cb9373-ea24-4927-b0c5-711b89388b0b"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[No]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="17" y="76" width="65" height="20" uuid="4d019698-6651-4bed-94ec-d42ef93783da"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[MR Name]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="323" y="76" width="54" height="20" uuid="aaeb4be6-177c-40b0-91e9-54299c776d13"/>
+				<text><![CDATA[Company]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="103" y="40" width="100" height="20" uuid="f9a61916-24e5-45f3-b44d-a935b06f1fad"/>
+				<textFieldExpression><![CDATA[$F{mr_order_id}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="103" y="76" width="100" height="20" uuid="8f5d1c06-2477-4d08-84cf-8af3261fa3ec"/>
+				<textFieldExpression><![CDATA[$F{mr_list_MR_Name}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="426" y="76" width="100" height="20" uuid="2c367543-ac1c-4211-9cb3-564928140c13"/>
+				<textFieldExpression><![CDATA[$F{mr_list_Company_Name}]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="8" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="41" splitType="Stretch">
+			<staticText>
+				<reportElement x="17" y="12" width="31" height="20" uuid="4e02c14b-2a10-4def-b1f2-7b51b5a84aa9"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[ID]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="203" y="12" width="48" height="20" uuid="1897247c-35d6-4870-af6e-ce77a5b59443"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[Name]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="403" y="12" width="100" height="20" uuid="57e98da8-23c1-4cf7-a869-4cf8618166f7"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[Qty]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="66" splitType="Stretch">
+			<textField>
+				<reportElement x="14" y="20" width="100" height="20" uuid="ce083189-55b6-4632-8580-ae533d53968d"/>
+				<textFieldExpression><![CDATA[$F{mr_order_id}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="188" y="20" width="100" height="20" uuid="b728f4a1-00a1-4ed2-8336-17998c11775a"/>
+				<textFieldExpression><![CDATA[$F{mr_order_Medicine_Name}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="403" y="20" width="100" height="20" uuid="cbd61288-25ec-49a8-8070-b2aa102ada25"/>
+				<textFieldExpression><![CDATA[$F{mr_order_Qty}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="1" y="44" width="554" height="1" uuid="337af7cf-f4f8-485d-826d-ecd70540a7c3"/>
+				<graphicElement>
+					<pen lineStyle="Dashed"/>
+				</graphicElement>
+			</line>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>

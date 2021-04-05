@@ -1,0 +1,241 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="b5de06f2-fbd2-47fb-af43-e254b32f86ba">
+	<property name="ireport.zoom" value="1.0245201830476058"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="receipt" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT
+     sales_product.`Bill_No` AS sales_product_Bill_No,
+     sales_product.`Medicine_Name` AS sales_product_Medicine_Name,
+     sales_product.`Price` AS sales_product_Price,
+     sales_product.`Qty` AS sales_product_Qty,
+     sales_product.`Total` AS sales_product_Total,
+     sales_product.`date` AS sales_product_date,
+     sales_product.`time` AS sales_product_time,
+     customer.`Bill_No` AS customer_Bill_No,
+     customer.`Patient_Name` AS customer_Patient_Name,
+     sales.`Total_Bill` AS sales_Total_Bill,
+     sales.`Payment` AS sales_Payment,
+     sales.`Balance` AS sales_Balance,
+     sales.`Bill_No` AS sales_Bill_No
+FROM
+     `sales_product` sales_product INNER JOIN `customer` customer ON sales_product.`Bill_No` = customer.`Bill_No`
+     INNER JOIN `sales` sales ON customer.`Bill_No` = sales.`Bill_No`
+WHERE
+     customer.`Bill_No` = $P{receipt}]]>
+	</queryString>
+	<field name="sales_product_Bill_No" class="java.lang.Integer"/>
+	<field name="sales_product_Medicine_Name" class="java.lang.String"/>
+	<field name="sales_product_Price" class="java.lang.String"/>
+	<field name="sales_product_Qty" class="java.lang.String"/>
+	<field name="sales_product_Total" class="java.lang.String"/>
+	<field name="sales_product_date" class="java.lang.String"/>
+	<field name="sales_product_time" class="java.lang.String"/>
+	<field name="customer_Bill_No" class="java.lang.Integer"/>
+	<field name="customer_Patient_Name" class="java.lang.String"/>
+	<field name="sales_Total_Bill" class="java.lang.String"/>
+	<field name="sales_Payment" class="java.lang.String"/>
+	<field name="sales_Balance" class="java.lang.String"/>
+	<field name="sales_Bill_No" class="java.lang.String"/>
+	<group name="sales">
+		<groupFooter>
+			<band height="189">
+				<staticText>
+					<reportElement x="399" y="14" width="33" height="13" uuid="e0e72051-827a-4346-8986-029dd9c809e3"/>
+					<textElement>
+						<font size="8"/>
+					</textElement>
+					<text><![CDATA[Total Bill]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="399" y="38" width="33" height="12" uuid="285c6c5c-e701-4965-946f-c9ae1ce0bd8b"/>
+					<textElement>
+						<font size="8"/>
+					</textElement>
+					<text><![CDATA[Payment]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="399" y="62" width="38" height="13" uuid="70572c01-adbe-4fb3-944d-d69e97b286b0"/>
+					<textElement>
+						<font size="8"/>
+					</textElement>
+					<text><![CDATA[Balance]]></text>
+				</staticText>
+				<textField>
+					<reportElement x="449" y="14" width="90" height="13" uuid="d57d15cb-97e8-4958-bc20-b0f7028712aa"/>
+					<textFieldExpression><![CDATA[$F{sales_Total_Bill}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="449" y="38" width="90" height="13" uuid="44872dc7-718b-4187-bbab-ff46f813ada1"/>
+					<textFieldExpression><![CDATA[$F{sales_Payment}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="449" y="62" width="90" height="13" uuid="ab5bb216-d627-4c7f-9e4a-7159e76a6fcc"/>
+					<textFieldExpression><![CDATA[$F{sales_Balance}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement x="152" y="146" width="230" height="20" uuid="94be3abd-becf-41f9-b5d3-18e039898d77"/>
+					<text><![CDATA[Take care of yourself  and family.  Thank you]]></text>
+				</staticText>
+			</band>
+		</groupFooter>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="111" splitType="Stretch">
+			<staticText>
+				<reportElement x="227" y="0" width="100" height="20" uuid="0ed5c161-feaa-4019-8553-28058759b56e"/>
+				<textElement textAlignment="Justified">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Shree Pharmacy]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="12" y="39" width="31" height="14" uuid="a7705b73-8d66-4303-aae5-9855f9727a08"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Bill No]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="449" y="39" width="80" height="14" uuid="097ef921-3480-472d-9019-6ab7e65d1930"/>
+				<textFieldExpression><![CDATA[$F{sales_product_date}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="405" y="39" width="27" height="14" uuid="6c33a612-cd43-4dcc-823c-811d1151f2aa"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Date]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="408" y="68" width="24" height="13" uuid="51d1cbd7-8ff6-45e1-9478-4aac0be16a9e"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Time]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="449" y="67" width="80" height="14" uuid="8b7a3346-c837-42b9-8448-fb1100bc500c"/>
+				<textFieldExpression><![CDATA[$F{sales_product_time}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="384" y="6" width="127" height="20" uuid="da6ed70e-7b2b-472f-ad65-f1e0d0def37e"/>
+				<text><![CDATA[Mobile No - 0123456789]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="94" y="68" width="58" height="13" uuid="5b882a36-8df9-4714-a1f1-6ba11d87a8cb"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{customer_Patient_Name}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="12" y="67" width="66" height="14" uuid="363e4fd0-85d3-4626-9f9e-9230033f13b9"/>
+				<text><![CDATA[Patient Name]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="94" y="39" width="58" height="14" uuid="a6a33648-f747-4a20-94a6-6591805dff42"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{sales_product_Bill_No}]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<columnHeader>
+		<band height="19" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="119" height="13" uuid="fc2e1778-94eb-48b2-9b4e-78041ec08c50"/>
+				<textElement>
+					<font size="10"/>
+				</textElement>
+				<text><![CDATA[Medicine Name]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="179" y="0" width="23" height="13" uuid="d31a7381-9665-474a-964a-0a74c23b0866"/>
+				<textElement>
+					<font size="10"/>
+				</textElement>
+				<text><![CDATA[Price]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="286" y="0" width="17" height="13" uuid="ff197327-2202-465f-91c0-bd3703a8e047"/>
+				<textElement>
+					<font size="10"/>
+				</textElement>
+				<text><![CDATA[Qty]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="390" y="0" width="67" height="13" uuid="f66e7eb3-76ab-4523-bf6d-f1e6e88b67b3"/>
+				<textElement>
+					<font size="10"/>
+				</textElement>
+				<text><![CDATA[Total]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="57" splitType="Stretch">
+			<textField>
+				<reportElement x="21" y="0" width="100" height="0" uuid="6c9a7312-94a0-48c8-b741-7c4e24514b99"/>
+				<textElement>
+					<font size="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{sales_product_Medicine_Name}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="19" width="100" height="10" uuid="c62e02e6-5f03-4633-a192-c72a82243acd"/>
+				<textElement>
+					<font size="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{sales_product_Medicine_Name}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="179" y="19" width="39" height="10" uuid="be3898ac-ed68-4f1d-be93-34a5611401f3"/>
+				<textElement>
+					<font size="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{sales_product_Price}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="273" y="19" width="41" height="10" uuid="67285c19-825d-4885-86b6-062a8e19588d"/>
+				<textElement>
+					<font size="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{sales_product_Qty}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="395" y="19" width="42" height="10" uuid="8f8942da-d4e2-4b8c-ad54-899cb8b7dfea"/>
+				<textElement>
+					<font size="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{sales_product_Total}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="0" y="29" width="555" height="1" uuid="1a0fab58-863b-40d6-be47-727ef7ab2ee7"/>
+				<graphicElement>
+					<pen lineStyle="Dashed"/>
+				</graphicElement>
+			</line>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="60" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="24" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch">
+			<line>
+				<reportElement x="0" y="23" width="555" height="1" uuid="f9ca1a65-41d5-4b80-86e1-405be3de349b"/>
+			</line>
+		</band>
+	</summary>
+</jasperReport>
